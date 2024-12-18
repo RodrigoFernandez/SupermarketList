@@ -8,5 +8,12 @@ https://fastapi.tiangolo.com/es/learn/
 
 https://cosasdedevs.com/fastapi/
 
+Previamente se debe ejecutar:
+```
+> poetry shell
+```
+
 para ejecutar:
-uvicorn main:app --reload
+```
+> uvicorn main:app --reload
+```
