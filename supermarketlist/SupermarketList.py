@@ -1,18 +1,18 @@
-listas = [
-    {"id": 0, "nombre": "Lista 1", "items": [{"id": 0, "nombre": "Item 1", "cantidad": 1},
-                                                         {"id": 1, "nombre": "Item 2", "cantidad": 2}]},
-    {"id": 1, "nombre": "Lista 2", "items": [{"id": 0, "nombre": "Item 1", "cantidad": 1},
-                                                         {"id": 1, "nombre": "Item 2", "cantidad": 3}]},
-            ]
+from  .database import get_db, engine
+from .models import Base, Lista
+
+def init_db():
+    Base.metadata.create_all(bind=engine)
 
 def devolver_mensaje_principal():
     return {"message": "Bienvenido"}
 
 def devolver_listas():
-    return {"message": "Listas",
-            "listas": [{"id": l.get("id"), "nombre": l.get("nombre")} for l in listas]}
+    db = next(get_db())
+    listas = db.query(Lista).all()
+    return listas
 
 def devolver_lista(id: int):
-    lista_buscada = listas[id]
-    return {"message": f"Lista {lista_buscada.get('nombre')}",
-            "lista": lista_buscada}
+    db = next(get_db())
+    lista_buscada = db.query(Lista).filter(Lista.id == id).first()
+    return lista_buscada
