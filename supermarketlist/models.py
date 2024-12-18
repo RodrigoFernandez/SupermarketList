@@ -7,7 +7,7 @@ class Lista(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, index=True)
-    items = relationship("Item", back_populates="lista")
+    items = relationship("Item", back_populates="lista", lazy='joined')
 
 class Item(Base):
     __tablename__ = "items"
