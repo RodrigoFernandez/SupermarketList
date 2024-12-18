@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "supermarketlist"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Fernandez Rodrigo <rdr.rkh+github2@gmail.com>"]
 readme = "README.md"
